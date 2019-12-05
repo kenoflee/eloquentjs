@@ -21,4 +21,4 @@ const countChar = (str, ch = 'B') => {
     return count;
 }
 
-console.log(countChar('', 'c'));
+module.exports = countChar;
