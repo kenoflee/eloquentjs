@@ -6,7 +6,7 @@ Define a recursive function isEven corresponding to this description. The functi
 */
 
 const isEven = (num) => {
-    if(Math.sign(num) === -1) return null;
+    if(Math.sign(num) === -1 || !Number.isInteger(num)) return null;
 
     if(num % 2 === 1) {
         return false;
@@ -17,4 +17,4 @@ const isEven = (num) => {
     }
 }
 
-console.log(isEven(-1));
+module.exports = isEven;

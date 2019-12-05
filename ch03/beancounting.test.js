@@ -1,6 +1,5 @@
 const beancounting = require('./beancounting');
 
-
 test('Counts every Bs in string', () => {
     const str = "BBBB";
     const count = beancounting(str);
