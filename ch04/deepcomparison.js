@@ -19,23 +19,39 @@ let o1 = {
 };
 
 let o2 = {
-    here: 1, 
-    object: 2
-}
+    object: 2,
+    here: {
+        is: "an"
+    }, 
+    
+};
+
+// let o2 = {
+//     here: 1, 
+//     object: 2
+// }
 
 
 const deepEqual = (obj1, obj2) => {
-    const bothAreObjects = (obj1 !== null && 
-                            obj2 !== null && 
-                            typeof obj1 === 'object' && 
-                            typeof obj2 === 'object');
+    const bothAreObjects = (object1, object2) => (object1 !== null && 
+                            object2 !== null && 
+                            typeof object1 === 'object' && 
+                            typeof object2 === 'object');
 
-    if(bothAreObjects) {
-        const obj1Keys = Object.keys(obj1);
-        const obj2Keys = Object.keys(obj2);
+    const objKeys1 = Object.keys(obj1);
+    for(let i = 0; i < objKeys1.length; i++) {
+        if(bothAreObjects(obj1[objKeys1[i]], obj2[objKeys1[i]])) {
+            deepEqual(obj1[objKeys1[i]], obj2[objKeys1[i]]);
+        } else if(obj1[objKeys1[i]] !== obj2[objKeys1[i]]) {
+            console.log(objKeys1[i], obj1[objKeys1[i]], obj2[objKeys1[i]]);
+            return false;
+        }
     }
+
+    return true;
 }
 
-deepEqual(o1, o2);
+console.log(deepEqual(o1, o2)); 
 //deepEqual({}, {});
+console.log(deepEqual(null, null));
 //deepEqual(null, null);
