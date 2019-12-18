@@ -47,19 +47,36 @@ const f = {
     //position: 0
     //returns 10
     nth: (list, position) => {
+        if(position < 0) return null;
+        
         for(let i = 0; i < position; i++) {
-            list = list.rest;
+            if(list.rest) {
+                list = list.rest;
+            } else {
+                return null;
+            }
         }
+
+        return list.value;
     },
     nthRecursive: (list, position) => {
+        if(position < 0) return null;
+        
         const goIndepth = (list, depth) => {
             if(position === depth) {
                 return list.value;
             }
-            return goIndepth(list.rest, depth + 1);
+            if(list.rest) {
+                return goIndepth(list.rest, depth + 1);
+            } else {
+                return null;
+            }
+            
         }
         return goIndepth(list, 0);
     }
 }
+
+console.log(f.nthRecursive({value: 10, rest: {value: 20, rest: null}} , 10));
 
 module.exports = f;
