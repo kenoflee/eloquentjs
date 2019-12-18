@@ -15,7 +15,7 @@
 
 const f = {
     //array = [10, 20]
-    //returns (value: 10, rest: {value: 20, rest: null}}
+    //returns {value: 10, rest: {value: 20, rest: null}}
     arrayToList: (array) => {
         const reverse = array.reverse();
         let list = {value: reverse[0], rest: null};
@@ -25,7 +25,7 @@ const f = {
         }
         return list;
     },
-    //list (value: 10, rest: {value: 20, rest: null}}
+    //list {value: 10, rest: {value: 20, rest: null}}
     //returns [10, 20]
     listToArray: (list) => {
         const array = [];
@@ -61,7 +61,5 @@ const f = {
         return goIndepth(list, 0);
     }
 }
-//console.log(f.nth(f.prepend(-1, f.arrayToList([10, 20])), 2));
-//console.log(f.prepend(-1, f.arrayToList([10, 20])), 2);
-console.log(f.nthRecursive(f.prepend(-1, f.arrayToList([10, 20])), 2));
-//console.log(f.listToArray(f.arrayToList([10, 20])));
+
+module.exports = f;
