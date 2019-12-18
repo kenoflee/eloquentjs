@@ -77,6 +77,4 @@ const f = {
     }
 }
 
-console.log(f.nthRecursive({value: 10, rest: {value: 20, rest: null}} , 10));
-
 module.exports = f;
