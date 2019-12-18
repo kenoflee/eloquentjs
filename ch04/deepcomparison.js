@@ -38,3 +38,5 @@ const deepEqual = (obj1, obj2) => {
     //if no false is detected, then return true
     return true;
 }
+
+module.exports = deepEqual;
