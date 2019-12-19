@@ -26,7 +26,7 @@ const characterScript = (code) => {
 
 // countBy([1, 2, 3, 4, 5], n => n > 2)
 // → [{name: false, count: 2}, {name: true, count: 3}]
-const countBy = () => {
+const countBy = (items, groupName) => {
     let counts = [];
     for (let item of items) {
         let name = groupName(item);
@@ -43,6 +43,39 @@ const countBy = () => {
     return counts;
 }
 
+// "Hey, مساء الخير"
+// → "rtl"
 const dominantDirection = (text) => {
+    //split the text to array
+    //each character has a code. iterate them into characterScript, get the result back
+    //group the result by direction value "ltr, rtl, ttb"
 
+    const scripts = [];
+
+    for(let i = 0; i < text.length; i++) {
+        scripts.push(characterScript(text.charCodeAt(i)));
+    }
+
+    //bypass the element that is null value
+    const getDirection = (element) => {
+        if(element) return element.direction;
+    }
+
+    const counts = countBy(scripts, getDirection);
+
+    const dominant = {
+        name: null,
+        count: 0,
+    };
+
+    for(const direction of counts) {
+        if(direction.count > dominant.count) {
+            dominant.count = direction.count;
+            dominant.name = direction.name;
+        }
+    }
+
+    return dominant.name;
 }
+
+module.exports = dominantDirection;
