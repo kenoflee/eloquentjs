@@ -4,11 +4,17 @@
 */
 
 const every = (array, test) => {
+    for(const element of array) {
+        const testResult = test(element);
+        if(!testResult) return false;
+    }
     return true;
 }
 
 const everySome = (array, test) => {
-    return true;
+    return !array
+        .map(element => !test(element))
+        .some(element => element)
 }
 
 const f = {
