@@ -8,10 +8,11 @@ test('Vec is successfully imported', () => {
 
 test('Vec successfully returns new Vec with plus method', () => {
     const vec = new Vec(3, 4);
-    const newVec = vec.plus(1, 2);
+    const vec2 = new Vec(1, 2);
+    const newVec = vec.plus(vec2);
 
-    expect(newVec.x).toBe(3 + 1);
-    expect(newVec.y).toBe(4 + 2);
+    expect(newVec.x).toBe(vec.x + vec2.x);
+    expect(newVec.y).toBe(vec.y + vec2.y);
 
     expect(vec.x).not.toBe(newVec.x);
     expect(vec.y).not.toBe(newVec.y);
@@ -19,10 +20,11 @@ test('Vec successfully returns new Vec with plus method', () => {
 
 test('Vec successfully returns new Vec with minus method', () => {
     const vec = new Vec(3, 4);
-    const newVec = vec.minus(1, 2);
+    const vec2 = new Vec(1, 2);
+    const newVec = vec.minus(vec2);
 
-    expect(newVec.x).toBe(3 - 1);
-    expect(newVec.y).toBe(4 - 2);
+    expect(newVec.x).toBe(vec.x - vec2.x);
+    expect(newVec.y).toBe(vec.y - vec2.y);
 
     expect(vec.x).not.toBe(newVec.x);
     expect(vec.y).not.toBe(newVec.y);

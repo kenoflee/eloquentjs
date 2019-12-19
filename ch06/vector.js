@@ -15,16 +15,16 @@ class Vec {
         this.y = y;
     }
 
-    plus(x, y) {
-        const X = this.x + x;
-        const Y = this.y + y;
+    plus(vec) {
+        const X = this.x + vec.x;
+        const Y = this.y + vec.y;
         const newVec = new Vec(X, Y);
         return newVec;
     }
 
-    minus(x , y) {
-        const X = this.x - x;
-        const Y = this.y - y;
+    minus(vec) {
+        const X = this.x - vec.x;
+        const Y = this.y - vec.y;
         const newVec = new Vec(X, Y);
         return newVec;
     }
