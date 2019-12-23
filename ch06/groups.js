@@ -37,6 +37,24 @@ class Group {
     delete(value) {
         this.values = this.values.filter( element => value !== element );
     }
+
+    [Symbol.iterator]() {
+        return new GroupIterator(this);
+    }
+}
+
+class GroupIterator {
+    constructor(group) {
+        this.current = 0;
+        this.group = group;
+    }
+
+    next() {
+        if(this.current === this.group.values.length) return {done: true};
+        const iteration = {value: this.group.values[this.current] , done: false};
+        this.current++;
+        return iteration;
+    }
 }
 
 module.exports = Group;
